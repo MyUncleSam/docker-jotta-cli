@@ -29,7 +29,7 @@ echo "OS Date: $(date)"
 
 echo "Starting jottad"
 start
-tail -f /var/lib/jottad/jottabackup.log &
+tail -f "$(jotta-cli logfile)" &
 
 child=$!
 wait "$child"
