@@ -4,7 +4,7 @@ LABEL github="https://github.com/MyUncleSam/docker-jotta-cli/"
 
 ENV TZ=Europe/Berlin
 
-ADD ./start /root/start.sh
+ADD ./start.sh /root/start.sh
 RUN apt-get update \
     && apt-get install -y wget apt-transport-https ca-certificates gnupg2 tzdata \
     && ln -fs /usr/share/zoneinfo/$TZ /etc/localtime && dpkg-reconfigure -f noninteractive tzdata \

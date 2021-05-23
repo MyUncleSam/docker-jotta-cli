@@ -5,9 +5,7 @@ services:
         hostname: docker-jotta-cli
         image: ruepp/docker-jotta-cli
         volumes:
-            - ./data:/var/ts3server
-            - ./logs:/var/ts3server/logs
-            - ./config:/var/ts3server_config
+            - ./data:/var/lib/jottad
         restart: unless-stopped
         environment:
             TZ: Europe/Berlin
