@@ -1,0 +1,13 @@
+version: '3.5'
+services:
+    docker-jotta-cli:
+        container_name: docker-jotta-cli
+        hostname: docker-jotta-cli
+        image: ruepp/docker-jotta-cli
+        volumes:
+            - ./data:/var/ts3server
+            - ./logs:/var/ts3server/logs
+            - ./config:/var/ts3server_config
+        restart: unless-stopped
+        environment:
+            TZ: Europe/Berlin
