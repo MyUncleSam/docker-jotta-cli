@@ -15,7 +15,8 @@ ADD ./jotta-cli.list /etc/apt/sources.list.d/jotta-cli.list
 RUN apt-get update \
     && apt-get install -y jotta-cli \
     && service jottad stop \
-    && update-rc.d jottad disable
+    && update-rc.d jottad disable \
+    && touch /var/lib/jottad/jottabackup.log
 
 VOLUME [ "/var/lib/jottad" ]
 ENTRYPOINT [ "/root/start.sh" ]
