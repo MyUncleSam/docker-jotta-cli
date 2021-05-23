@@ -1,6 +1,6 @@
 #!/bin/bash
 apt-get update
-apt-get -y safe-upgrade
+apt-get -y upgrade
 
 # initialize trap to forceful stop the bot
 trap terminator SIGHUP SIGINT SIGQUIT SIGTERM

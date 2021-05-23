@@ -16,7 +16,7 @@ RUN apt-get update \
     && apt-get install -y jotta-cli \
     && service jottad stop \
     && update-rc.d jottad disable \
-    && touch /var/lib/jottad/jottabackup.log
+    && update-rc.d jottad remove
 
 VOLUME [ "/var/lib/jottad" ]
-ENTRYPOINT [ "/root/start.sh" ]
+ENTRYPOINT [ "/usr/bin/jottad" ]
