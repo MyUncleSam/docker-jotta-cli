@@ -31,7 +31,7 @@ echo "Starting jottad"
 start
 #sleep 10 # we need to wait till the serviceisstarted before weare able to get the log path (ugly but the only way at the moment)
 #tail -f "$(jotta-cli logfile)" &
-tail -f /var/lib/jottad/jottabackup.log
+tail -f /var/lib/jottad/jottabackup.log &
 
 child=$!
 wait "$child"
