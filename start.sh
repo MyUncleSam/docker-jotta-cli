@@ -1,37 +1,18 @@
 #!/bin/bash
+echo "start jottacloud commandline"
+echo "OS Date: $(date)"
+
+# check for updates (this also keeps jottacloud up2date after each start)
+echo "checking for updates"
 apt-get update
 apt-get -y upgrade
 
-# initialize trap to forceful stop the bot
-trap terminator SIGHUP SIGINT SIGQUIT SIGTERM
-function terminator() { 
-  echo 
-  echo "Shutting down jottad $child..."
-  stop
-  kill -TERM "$child" 2>/dev/null
-  echo "Exiting."
-}
+# we need to make sure that the service is not running or starting in the background (after each update)
+echo "stopping and disabling default service (this could produce errors - just ignore them)"
+/etc/init.d/jottad stop
+update-rc.d jottad disable
+update-rc.d jottad remove
 
-function stop() {
-    /etc/init.d/jottad stop
-}
-
-function start() {
-    /etc/init.d/jottad start
-}
-
-function update() {
-    apt-get update
-    apt-get -y upgrade
-}
-
-echo "OS Date: $(date)"
-
-echo "Starting jottad"
-start
-#sleep 10 # we need to wait till the serviceisstarted before weare able to get the log path (ugly but the only way at the moment)
-#tail -f "$(jotta-cli logfile)" &
-tail -f /var/lib/jottad/jottabackup.log &
-
-child=$!
-wait "$child"
+# starting
+echo "starting jottad (to see logs open the 'jottabackup.log' file inside the mounted volume)"
+/usr/bin/jottad
