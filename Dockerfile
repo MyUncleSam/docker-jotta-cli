@@ -12,8 +12,6 @@ RUN apt-get update \
 
 RUN apt-get update \
     && apt-get install -y jotta-cli \
-    && service jottad stop \
-    && update-rc.d jottad disable \
     && update-rc.d jottad remove \
     && apt-get autoclean -y && apt-get clean -y && apt-get autoremove -y
 
