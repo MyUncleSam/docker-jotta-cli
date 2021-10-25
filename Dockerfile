@@ -6,7 +6,6 @@ ENV TZ=Europe/Berlin
 
 RUN apt-get update \
     && apt-get install --no-install-recommends -y wget apt-transport-https ca-certificates gnupg2 tzdata \
-    && chmod u+x /root/start.sh \
     && ln -fs /usr/share/zoneinfo/$TZ /etc/localtime && dpkg-reconfigure -f noninteractive tzdata \
     && wget -O - https://repo.jotta.us/public.gpg | apt-key add - \
     && echo "deb https://repo.jotta.us/debian debian main" | tee /etc/apt/sources.list.d/jotta-cli.list
