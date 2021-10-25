@@ -5,7 +5,7 @@ services:
         hostname: docker-jotta-cli
         image: ruepp/docker-jotta-cli
         volumes:
-            - ./data:/var/lib/jottad
+            - ./data:/root/.jottad
         restart: unless-stopped
         environment:
             TZ: Europe/Berlin
