@@ -15,8 +15,7 @@ RUN apt-get update \
     && service jottad stop \
     && update-rc.d jottad disable \
     && update-rc.d jottad remove \
-    && apt-get autoclean -y && apt-get clean -y && apt-get autoremove -y \
-    && rm -rf /var/lib/apt/lists/*
+    && apt-get autoclean -y && apt-get clean -y && apt-get autoremove -y
 
 VOLUME [ "/var/lib/jottad" ]
 ENTRYPOINT [ "/usr/bin/jottad" ]
