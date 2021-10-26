@@ -17,5 +17,5 @@ RUN apt-get update \
     && update-rc.d jottad remove \
     && apt-get autoclean -y && apt-get clean -y && apt-get autoremove -y
 
-VOLUME [ "/root/.jottad" ]
+VOLUME [ "/root/.jottad", "/var/lib/jottad" ]
 ENTRYPOINT [ "/usr/bin/jottad" ]
